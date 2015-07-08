@@ -11,8 +11,7 @@
 @interface ImageHelper : NSObject
 @property NSString *standardPhotoURL;
 @property NSString *filter;
-@property NSInteger latitude;
-@property NSInteger longitude;
+
 @property NSString *username;
 @property (nonatomic, assign) int searchTerm;
 - (instancetype)initWithStandardImage:(NSDictionary *)images filter:(NSString *)filter;
