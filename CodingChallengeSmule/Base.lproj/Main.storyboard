@@ -63,9 +63,13 @@
                                         </collectionView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="gfh-AS-pfT" firstAttribute="top" secondItem="DLl-zi-7ke" secondAttribute="topMargin" constant="-19" id="8gP-jo-Nbl"/>
                                         <constraint firstItem="gfh-AS-pfT" firstAttribute="top" secondItem="DLl-zi-7ke" secondAttribute="topMargin" constant="-19" id="8it-oR-ybW"/>
+                                        <constraint firstItem="gfh-AS-pfT" firstAttribute="leading" secondItem="DLl-zi-7ke" secondAttribute="leadingMargin" constant="-8" id="Obr-Pj-Qd1"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="gfh-AS-pfT" secondAttribute="bottom" constant="-8" id="Xpf-vE-lck"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gfh-AS-pfT" secondAttribute="trailing" constant="-8" id="dmo-Og-gq4"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="gfh-AS-pfT" secondAttribute="trailing" constant="-8" id="kOW-wp-IyY"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="gfh-AS-pfT" secondAttribute="bottom" constant="-8" id="wBd-1T-m7V"/>
                                         <constraint firstItem="gfh-AS-pfT" firstAttribute="leading" secondItem="DLl-zi-7ke" secondAttribute="leadingMargin" constant="-8" id="yzD-o4-nRb"/>
                                     </constraints>
                                 </tableViewCellContentView>
