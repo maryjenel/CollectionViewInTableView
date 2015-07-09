@@ -56,10 +56,6 @@
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
-                                            <connections>
-                                                <outlet property="dataSource" destination="kcB-qE-jEy" id="u0y-jy-wCJ"/>
-                                                <outlet property="delegate" destination="kcB-qE-jEy" id="7yT-d1-hG4"/>
-                                            </connections>
                                         </collectionView>
                                     </subviews>
                                     <constraints>

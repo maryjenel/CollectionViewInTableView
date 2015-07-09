@@ -20,7 +20,7 @@ typedef enum
 
 }SearchStatus;
 
-@interface TableViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface TableViewController ()
 
 //iboutlets
 
@@ -270,33 +270,12 @@ typedef enum
 
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    NSArray *array = [self.allImageArray objectAtIndex:section];
-    return array.count;
-}
+
 -(MJCustomTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 
 {       MJCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell"];
-        cell.imageDataArray = [self.allImageArray objectAtIndex:indexPath.section];
-        [cell.collectionView reloadData];
+    cell.imageDataArray = [self.allImageArray objectAtIndex:indexPath.row];
+    [cell.collectionView reloadData];
     return cell;
 }
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-        CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCellIdentifier" forIndexPath:indexPath];
-        for (NSMutableArray *searchDataImage in self.allImageArray)
-        {
-        for (ImageHelper *imageHelper in searchDataImage)
-        {
-            NSURL *url = [NSURL URLWithString:imageHelper.standardPhotoURL];
-            NSData *data = [[NSData alloc]initWithContentsOfURL:url];
-            UIImage *image = [UIImage imageWithData:data];
-            cell.imageView.image = image;
-        }
-        }
-        return cell;
-}
-
-
 @end

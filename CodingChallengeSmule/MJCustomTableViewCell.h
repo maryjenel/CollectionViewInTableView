@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImageHelper.h"
 
-@interface MJCustomTableViewCell : UITableViewCell
+@interface MJCustomTableViewCell : UITableViewCell <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic, readwrite) NSMutableArray *imageDataArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @end
