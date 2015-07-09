@@ -54,6 +54,11 @@ typedef enum
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
+    //create a gesture recognizer
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                               initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    [self.tableView addGestureRecognizer:longPress];
+
 }
 
 
@@ -63,7 +68,100 @@ typedef enum
 }
 
 
+- (IBAction)longPressGestureRecognized:(id)sender {
 
+    //grabs location of longpress gesture
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+    UIGestureRecognizerState state = longPress.state;
+
+    CGPoint location = [longPress locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    static UIView       *snapshot = nil;
+    static NSIndexPath  *sourceIndexPath = nil; // Initial index path, where touched begins.
+
+    switch (state) {
+        case UIGestureRecognizerStateBegan: {
+            if (indexPath) {
+                sourceIndexPath = indexPath;
+
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+
+                // Take a snapshot of row
+                snapshot = [self customSnapshotFromView:cell];
+
+                // Add the snapshot as subview, centered at cell's center
+                __block CGPoint center = cell.center;
+                snapshot.center = center;
+                snapshot.alpha = 0.0;
+                [self.tableView addSubview:snapshot];
+                [UIView animateWithDuration:0.25 animations:^{
+
+                    // Offset for gesture location.
+                    center.y = location.y;
+                    snapshot.center = center;
+                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+                    snapshot.alpha = 0.98;
+                    
+                    // Fades out.
+                    cell.alpha = 0.0;
+                    
+                } completion:^(BOOL finished) {
+                    //hides cell
+                    cell.hidden = YES;
+                    
+                }];
+            }
+            break;
+        }
+
+            //when touched off set y coordinate
+        case UIGestureRecognizerStateChanged: {
+            CGPoint center = snapshot.center;
+            center.y = location.y;
+            snapshot.center = center;
+
+            // Is destination valid and is it different from source?
+            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
+
+                // update data source.
+                [self.allImageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+
+                // move the rows.
+                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+
+                // update source syncs w UI changes.
+                sourceIndexPath = indexPath;
+            }
+            break;
+        }
+
+            //when done touched.
+        default: {
+            // Clean up.
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+            cell.hidden = NO;
+            cell.alpha = 0.0;
+            [UIView animateWithDuration:0.25 animations:^{
+
+                snapshot.center = cell.center;
+                snapshot.transform = CGAffineTransformIdentity;
+                snapshot.alpha = 0.0;
+
+                // Undo fade out.
+                cell.alpha = 1.0;
+
+            } completion:^(BOOL finished) {
+                
+                sourceIndexPath = nil;
+                [snapshot removeFromSuperview];
+                snapshot = nil;
+                
+            }];
+            break;
+        }
+    }
+
+}
 
 -(void)grabbingSnowImages
 {
@@ -282,9 +380,27 @@ typedef enum
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return YES;
+}
+
+
+- (UIView *)customSnapshotFromView:(UIView *)inputView {
+    //returns a snap shot of given view to appear floating
+    // Make an image from the input view.
+    UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
+    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
+    snapshot.layer.masksToBounds = NO;
+    snapshot.layer.cornerRadius = 0.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.4;
     
-    
+    return snapshot;
 }
 @end

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ImageHelper.h"
-#import "DetailViewController.h"
 #import <Foundation/Foundation.h>
 
 

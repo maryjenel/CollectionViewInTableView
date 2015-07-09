@@ -14,7 +14,6 @@
 
 @property NSString *username;
 @property (nonatomic, assign) int searchTerm;
-- (instancetype)initWithStandardImage:(NSDictionary *)images filter:(NSString *)filter;
 
 
 @end

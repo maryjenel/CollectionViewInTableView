@@ -48,17 +48,6 @@
     return self.imageDataArray.count;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    DetailViewController *vc = [[DetailViewController alloc]init];
 
-    ImageHelper *imageHelper = [self.imageDataArray objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:imageHelper.standardPhotoURL];
-    NSData *data = [[NSData alloc]initWithContentsOfURL:url];
-    vc.selectedImage = [UIImage imageWithData:data];
-    vc.username = imageHelper.username;
-
-
-}
 
 @end

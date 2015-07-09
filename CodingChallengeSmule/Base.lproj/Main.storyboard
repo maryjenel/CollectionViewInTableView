@@ -53,7 +53,6 @@
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="PGf-XT-pC4" id="NYN-cj-iaV"/>
-                                                        <segue destination="owo-ni-PJe" kind="push" identifier="detailSegue" id="JZt-VF-0D2"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -85,53 +84,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EQ-P3-h1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="940" y="74"/>
-        </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="cPq-Hm-x8s">
-            <objects>
-                <viewController id="owo-ni-PJe" customClass="DetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gTv-iZ-abJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ngp-rb-SIh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BoY-Vd-oue">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uyW-CG-NYL">
-                                <rect key="frame" x="0.0" y="20" width="320" height="327"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bta-54-3qZ">
-                                <rect key="frame" x="0.0" y="416" width="320" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="RHx-lF-Xnq"/>
-                                    <constraint firstAttribute="width" constant="320" id="a5u-r0-QKM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="uyW-CG-NYL" secondAttribute="trailing" id="G7w-cI-T7J"/>
-                            <constraint firstItem="bta-54-3qZ" firstAttribute="top" secondItem="uyW-CG-NYL" secondAttribute="bottom" constant="69" id="Pyk-pX-S0j"/>
-                            <constraint firstItem="bta-54-3qZ" firstAttribute="leading" secondItem="BoY-Vd-oue" secondAttribute="leading" id="Tlu-z5-Yfs"/>
-                            <constraint firstItem="uyW-CG-NYL" firstAttribute="leading" secondItem="BoY-Vd-oue" secondAttribute="leading" id="Wmt-dx-pbW"/>
-                            <constraint firstItem="Ngp-rb-SIh" firstAttribute="top" secondItem="bta-54-3qZ" secondAttribute="bottom" constant="111" id="e58-bY-5Wu"/>
-                            <constraint firstAttribute="trailing" secondItem="bta-54-3qZ" secondAttribute="trailing" id="sht-JU-RJ2"/>
-                            <constraint firstItem="uyW-CG-NYL" firstAttribute="top" secondItem="gTv-iZ-abJ" secondAttribute="bottom" id="wCr-iZ-IWe"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="a9z-pN-SAD"/>
-                    <connections>
-                        <outlet property="imageView" destination="uyW-CG-NYL" id="fz0-m9-5t6"/>
-                        <outlet property="usernameLbl" destination="bta-54-3qZ" id="qCt-Fa-k71"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W1I-iO-r1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1289" y="74"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eJb-IV-XEV">
