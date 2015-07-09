@@ -17,6 +17,7 @@
 		6248B1D11B41F59700395006 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6248B1CF1B41F59700395006 /* LaunchScreen.xib */; };
 		6248B1DD1B41F59700395006 /* CodingChallengeSmuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6248B1DC1B41F59700395006 /* CodingChallengeSmuleTests.m */; };
 		6248B1EB1B41FCB600395006 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6248B1EA1B41FCB600395006 /* ImageHelper.m */; };
+		625D66A61B4E5B3A00293FD5 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 625D66A51B4E5B3A00293FD5 /* DetailViewController.m */; };
 		628909E31B4B5E9000E8EEEF /* MJCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 628909E21B4B5E9000E8EEEF /* MJCustomTableViewCell.m */; };
 		6291C1211B4549EF00AD72AE /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6291C1201B4549EF00AD72AE /* CustomCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,8 @@
 		6248B1DC1B41F59700395006 /* CodingChallengeSmuleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingChallengeSmuleTests.m; sourceTree = "<group>"; };
 		6248B1E91B41FCB600395006 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		6248B1EA1B41FCB600395006 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
+		625D66A41B4E5B3A00293FD5 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		625D66A51B4E5B3A00293FD5 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		628909E11B4B5E9000E8EEEF /* MJCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJCustomTableViewCell.h; sourceTree = "<group>"; };
 		628909E21B4B5E9000E8EEEF /* MJCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJCustomTableViewCell.m; sourceTree = "<group>"; };
 		6291C11F1B4549EF00AD72AE /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 			children = (
 				6248B1C71B41F59700395006 /* TableViewController.h */,
 				6248B1C81B41F59700395006 /* TableViewController.m */,
+				625D66A41B4E5B3A00293FD5 /* DetailViewController.h */,
+				625D66A51B4E5B3A00293FD5 /* DetailViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				6248B1C31B41F59700395006 /* AppDelegate.m in Sources */,
 				6248B1C01B41F59700395006 /* main.m in Sources */,
 				6248B1C91B41F59700395006 /* TableViewController.m in Sources */,
+				625D66A61B4E5B3A00293FD5 /* DetailViewController.m in Sources */,
 				6248B1C61B41F59700395006 /* CodingChallengeSmule.xcdatamodeld in Sources */,
 				6291C1211B4549EF00AD72AE /* CustomCollectionViewCell.m in Sources */,
 				6248B1EB1B41FCB600395006 /* ImageHelper.m in Sources */,

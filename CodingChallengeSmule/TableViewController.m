@@ -54,10 +54,6 @@ typedef enum
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-
-
-
-
 }
 
 
@@ -74,10 +70,10 @@ typedef enum
     self.snowImageArray = [NSMutableArray new];
     self.snowDataArray = [NSArray new];
     //uses AF Networking to grab  images
-
-    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //uses GET method
-    [self.manager GET:@"https://api.instagram.com/v1/tags/snow/media/recent?client_id=60a5cb339aa14bbdbb74632bbd8b926d" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [manager GET:@"https://api.instagram.com/v1/tags/snow/media/recent?client_id=60a5cb339aa14bbdbb74632bbd8b926d" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          self.snowDataArray = responseObject[@"data"];
          //grabbing the first 10 images of the search
@@ -143,7 +139,7 @@ typedef enum
              NSDictionary *captionDict = [[self.dogDataArray objectAtIndex:i] objectForKey:@"caption"];
              NSDictionary *fromDict = [captionDict objectForKey:@"from"];
              imageHelper.username = [fromDict objectForKey:@"username"]; //username
-             imageHelper.searchTerm = searchTypeCat;
+             imageHelper.searchTerm = searchTypeDog;
 
 
 
@@ -224,10 +220,10 @@ typedef enum
     self.rabbitImageArray = [NSMutableArray new];
     self.rabbitDataArray = [NSArray new];
     //uses AF Networking to grab  images
-
-    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //uses GET method
-    [self.manager GET:@"https://api.instagram.com/v1/tags/rabbit/media/recent?client_id=60a5cb339aa14bbdbb74632bbd8b926d" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [manager GET:@"https://api.instagram.com/v1/tags/rabbit/media/recent?client_id=60a5cb339aa14bbdbb74632bbd8b926d" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          self.rabbitDataArray = responseObject[@"data"];
          //grabbing the first 10 images of the search
@@ -243,7 +239,7 @@ typedef enum
              NSDictionary *captionDict = [[self.rabbitDataArray objectAtIndex:i] objectForKey:@"caption"];
              NSDictionary *fromDict = [captionDict objectForKey:@"from"];
              imageHelper.username = [fromDict objectForKey:@"username"]; //username
-             imageHelper.searchTerm = searchTypeCat;
+             imageHelper.searchTerm = searchTypeRabbit;
             [self.rabbitImageArray addObject:imageHelper]; //adds the objects to the array
          }
          [self.tableView reloadData]; //always reload the tableview when doing an async call.
@@ -274,8 +270,21 @@ typedef enum
 -(MJCustomTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 
 {       MJCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell"];
-    cell.imageDataArray = [self.allImageArray objectAtIndex:indexPath.row];
-    [cell.collectionView reloadData];
+    if (self.allImageArray.count == 4)
+    {
+        //pass one of the arrays inside the array of arrays to the custom tableviewcell
+        cell.imageDataArray = [self.allImageArray objectAtIndex:indexPath.section];
+        [cell.collectionView reloadData];
+    }
+
+    NSLog(@"%@", self.allImageArray);
+
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    
 }
 @end
