@@ -64,7 +64,7 @@ typedef enum
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.allImageArray.count;
+    return 4;
 }
 
 
@@ -124,10 +124,12 @@ typedef enum
             if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
 
                 // update data source.
-                [self.allImageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+            [self.allImageArray exchangeObjectAtIndex:indexPath.section withObjectAtIndex:sourceIndexPath.section];
 
                 // move the rows.
-                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+                [self.tableView reloadData];
+              //  [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath]; 
+
 
                 // update source syncs w UI changes.
                 sourceIndexPath = indexPath;
@@ -135,9 +137,8 @@ typedef enum
             break;
         }
 
-            //when done touched.
+            //when let go touch.
         default: {
-            // Clean up.
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
             cell.hidden = NO;
             cell.alpha = 0.0;
@@ -402,5 +403,16 @@ typedef enum
     snapshot.layer.shadowOpacity = 0.4;
     
     return snapshot;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        //when delete is tapped
+
+        [self.allImageArray removeObjectAtIndex:indexPath.section];
+
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 @end

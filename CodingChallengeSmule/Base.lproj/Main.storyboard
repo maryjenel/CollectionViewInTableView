@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QNz-8F-g1v">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
@@ -19,7 +18,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Usj-lo-QkC" id="DLl-zi-7ke">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gfh-AS-pfT">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gfh-AS-pfT">
                                             <rect key="frame" x="0.0" y="-11" width="320" height="234"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HPN-js-Sr6">
                                                 <size key="itemSize" width="222" height="176"/>
@@ -35,7 +34,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="222" height="176"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PGf-XT-pC4">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGf-XT-pC4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="222" height="176"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="222" id="BUV-Xt-Szk"/>
@@ -45,12 +44,6 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstItem="PGf-XT-pC4" firstAttribute="top" secondItem="eoa-Vl-1A4" secondAttribute="topMargin" constant="-8" id="Cql-Xg-PIV"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="PGf-XT-pC4" secondAttribute="trailing" constant="-8" id="VOG-3D-X1B"/>
-                                                        <constraint firstItem="PGf-XT-pC4" firstAttribute="leading" secondItem="eoa-Vl-1A4" secondAttribute="leadingMargin" constant="-8" id="das-eL-4A8"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="PGf-XT-pC4" secondAttribute="bottom" constant="-8" id="syi-9c-gGU"/>
-                                                    </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="PGf-XT-pC4" id="NYN-cj-iaV"/>
                                                     </connections>
@@ -58,16 +51,6 @@
                                             </cells>
                                         </collectionView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="gfh-AS-pfT" firstAttribute="top" secondItem="DLl-zi-7ke" secondAttribute="topMargin" constant="-19" id="8gP-jo-Nbl"/>
-                                        <constraint firstItem="gfh-AS-pfT" firstAttribute="top" secondItem="DLl-zi-7ke" secondAttribute="topMargin" constant="-19" id="8it-oR-ybW"/>
-                                        <constraint firstItem="gfh-AS-pfT" firstAttribute="leading" secondItem="DLl-zi-7ke" secondAttribute="leadingMargin" constant="-8" id="Obr-Pj-Qd1"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="gfh-AS-pfT" secondAttribute="bottom" constant="-8" id="Xpf-vE-lck"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gfh-AS-pfT" secondAttribute="trailing" constant="-8" id="dmo-Og-gq4"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gfh-AS-pfT" secondAttribute="trailing" constant="-8" id="kOW-wp-IyY"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="gfh-AS-pfT" secondAttribute="bottom" constant="-8" id="wBd-1T-m7V"/>
-                                        <constraint firstItem="gfh-AS-pfT" firstAttribute="leading" secondItem="DLl-zi-7ke" secondAttribute="leadingMargin" constant="-8" id="yzD-o4-nRb"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="gfh-AS-pfT" id="xAr-PA-zdb"/>
