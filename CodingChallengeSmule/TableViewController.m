@@ -46,6 +46,8 @@ typedef enum
     //initialize NSmutablearrays
     self.allImageArray = [NSMutableArray new];
     self.manager = [AFHTTPRequestOperationManager manager];
+
+
     //calls custom methods
     [self grabbingSnowImages];
     [self grabbingDogImages];
@@ -64,7 +66,8 @@ typedef enum
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+
+    return self.allImageArray.count;
 }
 
 
@@ -126,9 +129,9 @@ typedef enum
                 // update data source.
             [self.allImageArray exchangeObjectAtIndex:indexPath.section withObjectAtIndex:sourceIndexPath.section];
 
-                // move the rows.
+                // reload the tablview
                 [self.tableView reloadData];
-              //  [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath]; 
+
 
 
                 // update source syncs w UI changes.
@@ -405,14 +408,5 @@ typedef enum
     return snapshot;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
 
-        //when delete is tapped
-
-        [self.allImageArray removeObjectAtIndex:indexPath.section];
-
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-}
 @end
